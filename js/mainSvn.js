@@ -80,21 +80,33 @@ function exibirParticipantes(grupo) {
 	$("#grupo_" + grupo).addClass("participante");
 	var num = 0;
 	for ( num in dados.grupos[grupo]) {
-		divPerms.append('<span class="participante">' + dados.grupos[grupo][num] + '</span>');
+		divPerms.append('<span class="participante">' + dados.grupos[grupo][num] + ' <a onclick="removeItem()">x<a></span>');
 	}
-	divPerms.append(botaoNovo('participante'));
+	divPerms.append(botaoNovo('participante', grupo));
 }
 
 /*
  * valoresPossiveis -> Uma lista para ser exibida como possíveis valores.
  */
-function botaoNovo(nomeColecao) {
+function botaoNovo(tipoItem, subItem) {
 	var html = "";
-	if (nomeColecao == 'participante') {
-		html += '<button onclick="adicionarItem(' + colecao + ', "' + indiceNaColecao + '")"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>';
+	if (tipoItem == 'participante') {
+		html += '<button onclick="adicionarItem(\'' + tipoItem + '\',  \'' + subItem + '\')"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>';
 	}
 	return html;
-} 
+}
+
+function adicionarItem(tipoItem, subItem) {
+	if (tipoItem == "participante") {
+		var username = "";
+		while (username.trim() == "") {
+		 	username = prompt("Qual a nova matricula? (Digite algo)");
+		}
+		dados.grupos[subItem].push(username);
+		exibirParticipantes(subItem);
+	}
+
+}
 
 
 function exibirPastas(repo) {
