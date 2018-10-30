@@ -78,10 +78,24 @@ function exibirParticipantes(grupo) {
 	divPerms.empty();
 	$("#grupos tr").removeClass("participante");
 	$("#grupo_" + grupo).addClass("participante");
-	for ( var num in dados.grupos[grupo]) {
+	var num = 0;
+	for ( num in dados.grupos[grupo]) {
 		divPerms.append('<span class="participante">' + dados.grupos[grupo][num] + '</span>');
 	}
+	divPerms.append(botaoNovo('participante'));
 }
+
+/*
+ * valoresPossiveis -> Uma lista para ser exibida como possíveis valores.
+ */
+function botaoNovo(nomeColecao) {
+	var html = "";
+	if (nomeColecao == 'participante') {
+		html += '<button onclick="adicionarItem(' + colecao + ', "' + indiceNaColecao + '")"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>';
+	}
+	return html;
+} 
+
 
 function exibirPastas(repo) {
 	$("#repos tbody tr").removeClass("participante");
