@@ -27,7 +27,10 @@
 }
 
 #grupos input {
-	width: 100%;
+	width: auto;
+}
+#grupos button {
+	width: auto;
 }
 
 .tableItem:hover {
@@ -44,6 +47,9 @@
 	padding: 6px;
 	margin: 3px;
 	display: inline-block;
+}
+.clicavel {
+	cursor: pointer;
 }
 
 .tableItem {

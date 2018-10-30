@@ -6,6 +6,7 @@ var dados = {
 	repos : {},
 	usuarios : {}
 };
+
 function tratarRegras(texto) {
 	var sintax_group = false;
 	var sintax_pasta = false;
@@ -62,15 +63,20 @@ function tratarRegras(texto) {
 }
 
 function plotarRegras() {
+	exibirGrupos();
+	var tableRepos = $("#repos tbody");
+	for ( var repo in dados.repos) {
+		tableRepos.append('<tr id="repo_' + repo + '" class="tableItem" onclick="exibirPastas(\'' + repo + '\')"><td>' + repo + '</td></tr>');
+	}
+}
+
+function exibirGrupos() {
 	var tableGrupos = $("#grupos tbody");
+	tableGrupos.empty();
 	for ( var grupo in dados.grupos) {
 		tableGrupos.append('<tr id="grupo_' + grupo + '" class="tableItem" onclick="exibirParticipantes(\'' + grupo + '\')"><td>' + grupo
 				+ '</td></tr>');
-	}
-	var tablePastas = $("#repos tbody");
-	for ( var repo in dados.repos) {
-		tablePastas.append('<tr id="repo_' + repo + '" class="tableItem" onclick="exibirPastas(\'' + repo + '\')"><td>' + repo + '</td></tr>');
-	}
+	}	
 }
 
 function exibirParticipantes(grupo) {
@@ -80,13 +86,22 @@ function exibirParticipantes(grupo) {
 	$("#grupo_" + grupo).addClass("participante");
 	var num = 0;
 	for ( num in dados.grupos[grupo]) {
-		divPerms.append('<span class="participante">' + dados.grupos[grupo][num] + ' <a onclick="removeItem()">x<a></span>');
+		var newHtml = '<span class="participante">' + dados.grupos[grupo][num];
+		newHtml += ' <a class="clicavel" onclick="removerItem(\'participante\' ,\'' + grupo + '\',\'' + num + '\')">x</a>';
+		newHtml += '</span>';
+		divPerms.append(newHtml);
 	}
 	divPerms.append(botaoNovo('participante', grupo));
 }
+function removerItem(tipoItem, subItem, indiceItem) {
+	if (tipoItem == 'participante') {
+		dados.grupos[subItem].splice(indiceItem, 1);
+		exibirParticipantes(subItem);
+	}
+}
 
-/*
- * valoresPossiveis -> Uma lista para ser exibida como possíveis valores.
+/**
+ * tipoItem -> participante, grupo, permissao
  */
 function botaoNovo(tipoItem, subItem) {
 	var html = "";
@@ -104,6 +119,17 @@ function adicionarItem(tipoItem, subItem) {
 		}
 		dados.grupos[subItem].push(username);
 		exibirParticipantes(subItem);
+	} else if (tipoItem == "grupo") {
+		var novoGrupo = "";
+		while (novoGrupo.trim() == "") {
+			novoGrupo = prompt("Qual o novo grupo? (Digite algo)");
+			if (!dados.grupos[novoGrupo]) {
+				dados.grupos[novoGrupo] = [];
+			}
+		}
+		exibirGrupos();
+		exibirParticipantes(novoGrupo);
+		scrollToGrupo();
 	}
 
 }
