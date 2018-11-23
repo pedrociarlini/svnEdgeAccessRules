@@ -19,6 +19,7 @@
 	background-color: #EED;
 	padding: 5px;
 	border-style: outset;
+	display: none;
 }
 
 #grupos {

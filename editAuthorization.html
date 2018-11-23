@@ -1,58 +1,231 @@
 <!DOCTYPE html>
-<html lang="pt">
-<head>
-<meta charset="utf-8">
-<title>TJCE Application</title>
+<!-- saved from url=(0063)http://tjcemts01.tj.ce.gov.br:3343/csvn/repo/editAuthorization? -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>APENAS TESTE - CollabNEt bla bla bla</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Subversion Edge">
+    <meta name="author" content="CollabNet">
 
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<link rel="stylesheet" href="css/mainSvn.css">
-</head>
-<body>
-	<div class="container-fluid" id="leitorTrello">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<span class="h2">Regras de Acesso do SVN</span>
-					</div>
-					<div class="panel-body">
-						<div id="regrasTratadas">
-							<div>
-								<h4>Grupos</h4>
-								<div id="grupos">
-									<input id="filtroGrupos" type="text" onkeyup="tratador.filtrarGrupos()"><button onclick="adicionarItem('grupo', null)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-									<span class="shortTable">
-										<table>
-											<tbody></tbody>
-										</table>
-									</span>
-								</div>
-								<div id="participantesGrupo"></div>
-							</div>
-							<div>
-								<h4>Pastas</h4>
-								<div id="repos">
-									<input id="filtroRepos" type="text" onkeyup="tratador.filtrarRepos()"> <span class="shortTable">
-										<table>
-											<tbody></tbody>
-										</table>
-									</span>
-								</div>
-								<div id="repoPastas">
-									<input id="filtroPastas" type="text" onkeyup="tratador.filtrarPastas()"> <span class="shortTable">
-										<table>
-											<tbody></tbody>
-										</table>
-									</span>
-								</div>
-								<div id="permissoes"></div>
-							</div>
-							<button onclick="tratador.exportToText('#regras')">Exportar para texto</button>
-							<button onclick="tratador.cancelarEdicao()">Cancelar</button>
-						</div>
-						<br>
-						<button onclick="tratador.tratarRegras($('#regras').val()); tratador.plotarRegras();">Tratar de outra forma</button>
-						<textarea id="regras" rows="7" cols="100">[groups]
+    <link href="./editAuthorization_files/bootstrap.css" rel="stylesheet">
+    <link  href="css/mainSvn.css" rel="stylesheet">
+
+    <style type="text/css">
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        padding-bottom: 40px;
+      }
+
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+    </style>
+    <link href="./editAuthorization_files/svnedge-3.0.0.css" rel="stylesheet">                                                                                                                                                                  
+    <link href="./editAuthorization_files/bootstrap-responsive.css" rel="stylesheet">
+ 
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+      
+    <link rel="shortcut icon" href="http://tjcemts01.tj.ce.gov.br:3343/csvn/images/icons/favicon.ico">
+          
+    <!-- jquery lib is often needed before page html is rendered -->
+    <script type="text/javascript" src="./editAuthorization_files/jquery-1.7.1.min.js.download"></script>
+
+    <script type="text/javascript" src="./editAuthorization_files/application-3.0.0.js.download"></script>
+
+    
+    <meta name="layout" content="main">
+
+
+  </head>
+  <body>
+    
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> 
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/" class="brand"><img class="hidden-phone" src="./editAuthorization_files/logo.png" alt="Inicio"><img class="visible-phone" src="./editAuthorization_files/small-logo.png" alt="Inicio"></a>
+          <div class="nav-collapse">
+            <!-- buttons -->
+            <ul class="nav">
+            
+                    
+
+        
+
+        
+
+        
+        
+        
+            
+        
+        
+        
+        
+          
+          <li class="active"><a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/repo/index" target="_top">Repositórios</a></li>
+        
+          
+          <li><a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/user/index" target="_top">Usuários</a></li>
+        
+          
+          <li><a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/server/index" target="_top">Administração</a></li>
+        
+          
+          <li><a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/ocn/index" target="_top">Extenções</a></li>
+        
+        
+        
+            </ul>
+            <!-- buttons end -->
+            <ul class="nav pull-right">
+                
+                
+                    <li id="loggedInUser">
+                    <a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/user/showSelf">
+                    7713&nbsp;(7713)
+                    </a>
+                </li>
+                <li class="divider-vertical"></li>
+                <li><a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/logout/index">SAIR</a>
+                
+              </li>
+              <li class="divider-vertical"></li>
+              
+              <li class="dropdown"><a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/repo/editAuthorization?#" class="dropdown-toggle" data-toggle="dropdown">AJUDA <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="http://help.collab.net/topic/csvn/action/managerepositories.html" target="_blank">Página Atual</a></li>
+                  <li><a href="http://help.collab.net/topic/csvn/faq/whatiscollabnetsubversion.html" target="_blank">Conteúdo</a></li>
+                  <li><a href="http://help.collab.net/topic/csvn/releasenotes/csvnedge.html" target="_blank">Notas de Lançamento</a></li>
+                  <li class="divider"></li>
+                  <li><a data-toggle="modal" href="http://tjcemts01.tj.ce.gov.br:3343/csvn/repo/editAuthorization?#aboutModal">Sobre o Subversion Edge</a></li>
+                </ul>
+              </li>
+
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+        <div id="aboutModal" class="modal hide fade" style="display: none;">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3>Sobre o Subversion Edge</h3>
+      </div>
+      <div class="modal-body">
+        <p>
+          
+          <strong>Lançamento: 3.1.0</strong>
+        </p>
+        <p>© 2012 CollabNet. CollabNet é uma marca registrada da CollabNet, Inc. Subversion é uma marca registrada da Apache Software Foundation.</p>
+        <p>Ícones disponibilizados por <a target="_blank" href="http://glyphicons.com/">Glyphicons</a>.</p>
+        <p><a href="https://ctf.open.collab.net/sf/wiki/do/viewPage/projects.svnedge/wiki/OpenSourceComponents" target="_blank">Lista de componentes open-source e licenças.</a>
+        </p>
+              
+      </div>
+      <div class="modal-footer">
+        <a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/repo/editAuthorization?#" class="btn btn-primary" data-dismiss="modal">Close</a>
+      </div>
+    </div>
+
+    
+    <!-- main content section begin -->
+    <div class="container-fluid">    
+      <div class="sessionmessages" id="sessionmessages">
+        <!-- 
+          <div class="alert alert-block">
+          <h4 class="alert-heading">Updates Available</h4>
+          There are new updates available for <a href="updates.html">download</a>.
+          </div>
+        -->
+            
+            
+            
+      </div>
+      <div class="requestmessages" id="requestmessages"> 
+            
+            
+            
+      </div>
+    </div> <!-- /container-fluid -->
+ 
+    <div id="main" class="container-fluid">
+      <div class="row-fluid">
+
+        
+        
+          
+          <!-- *************  LEFT NAV STUFF GOES HERE *********** -->
+          <div class="span3">
+            <div class="well sidebar-nav">
+              <ul class="nav nav-list">
+                
+
+      <li class="nav-header">
+          Repositórios
+      </li>
+
+      <li>
+          <a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/repo/list">Lista de Repositórios</a>
+      </li>
+
+    
+
+      
+      <li class="active">
+          <a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/repo/showAuthorization">Regras de Acesso</a>
+      </li>
+      
+
+      <li>
+          <a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/repo/bkupScheduleMultiple">Agendar Backup</a>
+      </li>
+
+      
+      <li>
+          <a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/repoTemplate/list">Gerenciar Modelos</a>
+      </li>
+      
+      
+    
+
+              </ul>
+            </div> <!--/.well -->
+
+            
+            <div class="well hidden-phone">
+              <span class="label label-info">Tip:</span>
+              Consider connecting your Subversion Edge server to TeamForge for enhanced permissions management functionality. TeamForge provides a Role-Based Access Control model that allows you to delegate permissions management to project teams.
+            </div> <!--/.well -->
+            
+
+          </div> <!--/span3-->
+        
+        <div class="span9">
+          
+            <div class="page-header"><h1>Regras de Acesso de Repositório</h1></div>
+          
+
+          <div id="pageContent">
+            
+
+
+
+
+
+<p><strong>Atenção:</strong> Outros usuários não podem editar este arquivo até que você clique no botão de Salvar ou no de Cancelar.</p>
+<form action="http://tjcemts01.tj.ce.gov.br:3343/csvn/repo/index" method="post">
+  <input type="hidden" name="fileId" value="accessRules" id="fileId">
+  <div style="width: 100%">
+    <textarea id="fileContent" name="fileContent" rows="25" cols="80" style="width: 99%">[groups]
 gmetricas=9380,02686011351
 gdemandas_desenv=02168687340,70253978149
 gdemandas_fabrica=91593581300,69262225334
@@ -90,7 +263,7 @@ gecpr-sefin=22589,200349
 gecpr-sgp=22578,22652,22590,22543
 gecpr-setin=22585,22668,9707,9293,9591
 gecpr-FCB=10002,201424,9591
-gept=8348,22715,22667,8198,80184510,10081,801845,22715,22667,8198,80184510,10081,22587,22611,23902,9293,40097,40174,bonitaengine,9580,22546,41025,5264,41635
+gept=8348,22715,22667,8198,80184510,10081,801845,22715,22667,8198,80184510,10081,22587,22611,23902,9293,40097,40174,bonitaengine,9580,22546,41025,5264,41635,7713,9626
 gept-leitura=7713
 gept-ascom=104media74
 gept-sejud=632
@@ -286,7 +459,7 @@ gaquisicoes-AQSETIN2018008=18302,9329,400294,9141,8025
 gaquisicoes-AQSETIN2018008-leitura=3270
 gaquisicoes-AQSETIN2018009=9578,9551,800
 gaquisicoes-AQSETIN2018009-leitura=935,5198,8025
-gaquisicoes-AQSETIN2018010=9578,9551,935,400293,800
+gaquisicoes-AQSETIN2018010=9578,9551,935,400293,800,8046
 gaquisicoes-AQSETIN2018010-leitura=935,5198,8025
 gaquisicoes-AQSETIN2018011=9578,9551,935,400293,800,217
 gaquisicoes-AQSETIN2018011-leitura=935,5198,8025
@@ -309,7 +482,7 @@ gaquisicoes-AQSETIN2018021-leitura=5198
 gaquisicoes-AQSETIN2018022=400294,1201,9581
 gaquisicoes-AQSETIN2018022-leitura=5198,3270,9329,9729
 gaquisicoes-AQSETIN2018023=400293,800,9578,9551,5198,935,5198,9578,800,8284
-gaquisicoes-AQSETIN2018024=9578,9551,935
+gaquisicoes-AQSETIN2018024=9578,9551,935,22668,800,8046
 gaquisicoes-AQSETIN2018025=400294,9729,9329
 gaquisicoes-AQSETIN2018025-leitura=3270,9329,9630
 gaquisicoes-AQSETIN2018026=8201
@@ -320,6 +493,13 @@ gaquisicoes-AQSETIN2018028-leitura=5198,3270,9630
 gaquisicoes-AQSETIN2018029=400294
 gaquisicoes-AQSETIN2018029-leitura=3270,9329,18302
 gaquisicoes-AQSETIN2018030=400294
+gaquisicoes-AQSETIN2018031=201571,8201
+gaquisicoes-AQSETIN2018032=9630
+gaquisicoes-AQSETIN2018033=400293
+gaquisicoes-AQSETIN2018033-leitura=9551,5198
+gaquisicoes-AQSETIN2018034=9578,800,935,8046
+gaquisicoes-AQSETIN2018034-leitura=935,9551
+gaquisicoes-AQSETIN2018035=201571,8227,24225,7813,3051,8284
 gprojetos=8204,22593,8198 
 gprojetos-leitura=8204,9580
 gauditoria=7807,9434,9707,22585,22668,900819,9141
@@ -380,7 +560,7 @@ gcorregedoriaCartorios = 7713
 gpresidencia  = 800725, 801396, 801395, 8920, 9408,9817
 gshared = 800725, 9408
 gauditoriasetin=9347,8794
-gsajadm-sajadm=8227,9580,22605,22733,9591,9553,7813,22666,00164676392,42593735368,02696780340
+gsajadm-sajadm=8227,9580,22605,22733,9591,9553,7813,22666,00164676392,42593735368,02696780340,41854
 gsajadm-sajadm-r=400270
 gsajadm-alx=8227,9580,22605,22733,9591,22666,00164676392,42593735368,02696780340
 gsajadm-sip=8227,9580,22605,22733,9591,22666,00164676392,42593735368,02696780340
@@ -766,6 +946,8 @@ gtime-setin-PJSETIN2016001 = 8204
 gfreqbio=8227,00164676392
 
 gsiscoman=3281
+
+gcapacitacoes=40097,41025,22576,40978,bonitaengine
 
 gcentralatendimentoforum=8227,9615
 
@@ -1477,6 +1659,23 @@ gcentralatendimentoforum=8227,9615
 
 [aquisicoes:/AQSETIN2018030]
 @gaquisicoes-AQSETIN2018030=rw
+
+[aquisicoes:/AQSETIN2018031]
+@gaquisicoes-AQSETIN2018031=rw
+
+[aquisicoes:/AQSETIN2018032]
+@gaquisicoes-AQSETIN2018032=rw
+
+[aquisicoes:/AQSETIN2018033]
+@gaquisicoes-AQSETIN2018033=rw
+@gaquisicoes-AQSETIN2018033-leitura=r
+
+[aquisicoes:/AQSETIN2018034]
+@gaquisicoes-AQSETIN2018034=rw
+@gaquisicoes-AQSETIN2018034-leitura=r
+
+[aquisicoes:/AQSETIN2018035]
+@gaquisicoes-AQSETIN2018035=rw
 
 [aquisicoes:/AQ Padrão]
 @gaquisicoes-AQPadrao=r
@@ -4001,20 +4200,93 @@ integradorVersoes=r
 @gsiscoman=rw
 @gsvn-admin=rw
 @grwsistemas=rw
-@gredmine=r</textarea>
+@gredmine=r
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+[capacitacoes:/]
+@gsvn-admin=rw
+@gcapacitacoes=rw</textarea>
+  </div>
+    <input type="submit" name="_action_saveAuthorization" value="Salvar" id="save_button" class="btn btn-primary">
+    <input type="submit" name="_action_cancelEditAuthorization" value="Cancelar" id="cancel_button" class="btn">
+</form>
 
-	<script src="js/jquery-1.7.1.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/bootstrap-notify.min.js"></script>
-	<script src="js/mainSvn.js"></script>
-	<script>
-		const tratador = new AccessRulesHelper();
-	</script>
-</body>
-</html>
+<script type="text/javascript">
+
+  var isAjaxCancel = true;
+  function stopAjaxCancel() {
+    isAjaxCancel = false;
+  }
+  $('#save_button').click(stopAjaxCancel);
+  $('#cancel_button').click(stopAjaxCancel);
+
+  <!-- Safari wants a synchronous call for this to work, other browsers seem fine to send the request and move on -->
+  window.onbeforeunload = function() {
+    if (isAjaxCancel) {
+      $.ajax({
+        url: '/csvn/repo/cancelEditAuthorization',
+        type: "GET",
+        dataType: 'html',
+        async: false
+      });      
+    }
+  }
+
+</script>
+
+
+
+
+
+          </div>
+        </div><!-- /spanX -->
+      </div><!-- /row-fluid -->
+    </div><!-- /container-fluid #main-->
+    <!-- main content section end -->
+    <!-- ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="./editAuthorization_files/jquery-tablesorter.js.download"></script>
+
+    <script type="text/javascript" src="./editAuthorization_files/bootstrap.js.download"></script>
+
+    <script type="text/javascript" src="./editAuthorization_files/load-image.min.js.download"></script>
+
+    <script type="text/javascript" src="./editAuthorization_files/bootstrap-image-gallery.min.js.download"></script>
+
+    <!-- TRATADOR de Permissões -->
+    <div id="regrasTratadas">
+        <div>
+            <h4>Grupos</h4>
+            <div id="grupos">
+                <input id="filtroGrupos" type="text" onkeyup="tratador.filtrarGrupos()"><button onclick="adicionarItem('grupo', null)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                <span class="shortTable">
+                    <table>
+                        <tbody></tbody>
+                    </table>
+                </span>
+            </div>
+            <div id="participantesGrupo"></div>
+        </div>
+        <div>
+            <h4>Pastas</h4>
+            <div id="repos">
+                <input id="filtroRepos" type="text" onkeyup="tratador.filtrarRepos()"> <span class="shortTable">
+                    <table>
+                        <tbody></tbody>
+                    </table>
+                </span>
+            </div>
+            <div id="repoPastas">
+                <input id="filtroPastas" type="text" onkeyup="tratador.filtrarPastas()"> <span class="shortTable">
+                    <table>
+                        <tbody></tbody>
+                    </table>
+                </span>
+            </div>
+            <div id="permissoes"></div>
+        </div>
+        <button onclick="tratador.exportToText('#regras')">Exportar para texto</button>
+        <button onclick="tratador.cancelarEdicao()">Cancelar</button>
+    </div>
+    <script src="js/mainSvn.js"></script>
+
+</body></html>
