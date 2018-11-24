@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0063)http://tjcemts01.tj.ce.gov.br:3343/csvn/repo/editAuthorization? -->
+<!-- saved from url=<EDGE SERVER>/csvn/repo/editAuthorization? -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <title>APENAS TESTE - CollabNEt bla bla bla</title>
@@ -9,7 +9,10 @@
     <meta name="author" content="CollabNet">
 
     <link href="./editAuthorization_files/bootstrap.css" rel="stylesheet">
+
+    <!-- svnEdgeAccessRules - ADD THIS -->
     <link  href="css/mainSvn.css" rel="stylesheet">
+    <!-- svnEdgeAccessRules - end ADD THIS -->
 
     <style type="text/css">
       body {
@@ -56,33 +59,10 @@
             <!-- buttons -->
             <ul class="nav">
             
-                    
-
-        
-
-        
-
-        
-        
-        
-            
-        
-        
-        
-        
-          
           <li class="active"><a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/repo/index" target="_top">Repositórios</a></li>
-        
-          
           <li><a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/user/index" target="_top">Usuários</a></li>
-        
-          
           <li><a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/server/index" target="_top">Administração</a></li>
-        
-          
           <li><a href="http://tjcemts01.tj.ce.gov.br:3343/csvn/ocn/index" target="_top">Extenções</a></li>
-        
-        
         
             </ul>
             <!-- buttons end -->
@@ -4208,6 +4188,9 @@ integradorVersoes=r
   </div>
     <input type="submit" name="_action_saveAuthorization" value="Salvar" id="save_button" class="btn btn-primary">
     <input type="submit" name="_action_cancelEditAuthorization" value="Cancelar" id="cancel_button" class="btn">
+    <!-- svnEdgeAccessRules - ADD THIS -->
+    <input type="button" value="Edit friendly" onclick="tratador.tratarRegras($('#fileContent').val()); tratador.plotarRegras();" id="svnEdgeAccessRules_button" class="btn">
+    <!-- svnEdgeAccessRules - end ADD THIS -->
 </form>
 
 <script type="text/javascript">
@@ -4233,10 +4216,6 @@ integradorVersoes=r
 
 </script>
 
-
-
-
-
           </div>
         </div><!-- /spanX -->
       </div><!-- /row-fluid -->
@@ -4252,12 +4231,13 @@ integradorVersoes=r
 
     <script type="text/javascript" src="./editAuthorization_files/bootstrap-image-gallery.min.js.download"></script>
 
-    <!-- TRATADOR de Permissões -->
+    <!-- svnEdgeAccessRules - ADD THIS -->
     <div id="regrasTratadas">
         <div>
-            <h4>Grupos</h4>
+            <h4>Groups</h4>
             <div id="grupos">
-                <input id="filtroGrupos" type="text" onkeyup="tratador.filtrarGrupos()"><button onclick="adicionarItem('grupo', null)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+                <input id="filtroGrupos" type="text" onkeyup="tratador.filtrarGrupos()">
+                <input type="button" class="btn" value="+" onclick="tratador.adicionarItem('grupo', null)">
                 <span class="shortTable">
                     <table>
                         <tbody></tbody>
@@ -4267,16 +4247,20 @@ integradorVersoes=r
             <div id="participantesGrupo"></div>
         </div>
         <div>
-            <h4>Pastas</h4>
+            <h4>Repositories / Folders</h4>
             <div id="repos">
-                <input id="filtroRepos" type="text" onkeyup="tratador.filtrarRepos()"> <span class="shortTable">
+                <input id="filtroRepos" type="text" onkeyup="tratador.filtrarRepos()">
+                <input type="button" class="btn" value="+" onclick="tratador.adicionarItem('repo', null)">
+                <span class="shortTable">
                     <table>
                         <tbody></tbody>
                     </table>
                 </span>
             </div>
             <div id="repoPastas">
-                <input id="filtroPastas" type="text" onkeyup="tratador.filtrarPastas()"> <span class="shortTable">
+                <input id="filtroPastas" type="text" onkeyup="tratador.filtrarPastas()">
+                <input id="btnAddPasta" type="button" class="btn" value="+" disabled="true" title="Selecione um repositório para adicionar pasta">
+                <span class="shortTable">
                     <table>
                         <tbody></tbody>
                     </table>
@@ -4284,9 +4268,13 @@ integradorVersoes=r
             </div>
             <div id="permissoes"></div>
         </div>
-        <button onclick="tratador.exportToText('#regras')">Exportar para texto</button>
-        <button onclick="tratador.cancelarEdicao()">Cancelar</button>
+        <button onclick="tratador.finalizarEdicao('#fileContent')" class="btn">Export to text</button>
+        <button onclick="tratador.cancelarEdicao()" class="btn">Cancel</button>
     </div>
     <script src="js/mainSvn.js"></script>
+    <script>
+      const tratador = new AccessRulesHelper();
+    </script>
+    <!-- svnEdgeAccessRules - end ADD THIS -->
 
 </body></html>
